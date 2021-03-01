@@ -12,6 +12,12 @@ class DAG:
                 node_list.append(course)
             for j in prec[course]:
                 edge_list.append([j, course])
+
+        for course in prec:
+            for j in prec[course]:
+                if(j not in node_list):
+                    node_list.append(j)
+
         self.nodes = node_list
         self.edge = edge_list
                 

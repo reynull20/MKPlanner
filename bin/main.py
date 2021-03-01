@@ -61,8 +61,6 @@ def topological_alt(graf1):
     
     while(in_node) : sort()
     return res
-
-def final_schedule:
     
 
 '''
@@ -93,7 +91,7 @@ def topological_sort(graf):
 ''' 
     
 # BELOW HERE IS FOR TESTING PURPOSE
-tess = readfile("contoh1.txt")
+tess = readfile("contoh2.txt")
 tst1 = create_graf(getPrecDict(tess))
 tst2 = getPrecDict(tess)
 print(topological_alt(tst2))

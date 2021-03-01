@@ -12,7 +12,7 @@ def readfile(file_name):
     arr_of_course = []
 
     for i in range(len(matkul)):
-        arr_of_course.append(matkul[i].replace("\n", "").replace(".","").replace(" ",""))
+        arr_of_course.append(matkul[i].replace("\n", "").replace(".",""))
 
     return arr_of_course
 
@@ -21,7 +21,7 @@ def getPrecDict(course):
     prec = {}
     
     for i in range(len(course)):
-        deskripsi = course[i].split(",")
+        deskripsi = course[i].split(", ")
         key = deskripsi[0]
         deskripsi.remove(key)
         prec[key] = deskripsi
@@ -29,14 +29,22 @@ def getPrecDict(course):
     return prec
 
 
-#MAIN PROGRAM
-fl = input("Enter filename : ")
+#MAIN ALGORITHM
+exit_loop = 1
+while(exit_loop):
+    fl = input("Enter filename : ")
 
-prerequirement = getPrecDict(readfile(fl))
+    prerequirement = getPrecDict(readfile(fl))
 
-graf = DAG(prerequirement)
-prerec_dict = graf.getderajatmasuk()
+    graf = DAG(prerequirement)
+    prerec_dict = graf.getderajatmasuk()
 
-result, schedule = topological_sort(graf, prerec_dict)
+    result, schedule = topological_sort(graf, prerec_dict)
 
-printSchedule(schedule)
+    printSchedule(schedule)
+
+    decision = input("Try another file? (Y/n) : ")
+    if(decision == "Y" or decision == "y"):    
+        exit_loop = 1
+    else :
+        exit_loop = 0
